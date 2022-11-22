@@ -9,14 +9,12 @@ class SplashView extends GetView<SplashController> {
   const SplashView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.find<AppController>().initializeLocationAndSave();
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'SplashView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
+    controller.appController.initializeLocationAndSave();
+    return Scaffold(
+        body: Center(
+            child: Image.asset(
+      'assets/logo.png',
+      height: 100,
+    )));
   }
 }
