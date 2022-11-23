@@ -50,7 +50,6 @@ class MyAppBarComponent {
           textStyle: TextStyle(
             color: titleColor ??
                 MyColor.hexToColor(MyColor.titleGreyColorMenuTitle),
-            fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
         ),

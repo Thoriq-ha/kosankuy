@@ -15,7 +15,9 @@ class AuthView extends GetView<AuthController> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         MyInputComponent.textOutline(
-          () {},
+          (v) {
+            controller.paramLogin['identitas'] = v;
+          },
           context: context,
           hintText: 'email',
         ),
@@ -24,7 +26,9 @@ class AuthView extends GetView<AuthController> {
         ),
         Obx(() {
           return MyInputComponent.textOutline(
-            () {},
+            (v) {
+              controller.paramLogin['password'] = v;
+            },
             context: context,
             hintText: 'password',
             isPassword: controller.isPassword.value,
@@ -37,7 +41,9 @@ class AuthView extends GetView<AuthController> {
                     : Icons.visibility_off)),
           );
         }),
-        MyButtonComponent.buttonFlat(context, () {}, text: 'Login'),
+        MyButtonComponent.buttonFlat(context, () {
+          controller.login();
+        }, text: 'Login'),
       ],
     ));
   }

@@ -10,7 +10,7 @@ class User {
   String nama;
   String email;
   String nomorHp;
-  String token;
+  String? token;
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
@@ -18,11 +18,11 @@ class User {
       nama: json['nama'],
       email: json['email'],
       nomorHp: json['nomor_hp'],
-      token: json['token'],
+      token: '',
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     final data = <String, dynamic>{};
     data['id'] = id;
     data['nama'] = nama;

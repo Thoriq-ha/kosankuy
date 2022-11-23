@@ -20,7 +20,7 @@ class SplashController extends GetxController {
     if (user != null) {
       appController.user = User.fromJson(json.decode(user));
       appController.updateToken();
-      // Get.offNamed(Routes.HOME);
+      Get.offNamed(Routes.HOME);
     } else {
       Get.offNamed(Routes.AUTH);
     }
