@@ -42,13 +42,13 @@ class AppController extends GetxController {
       permissionGranted = await location.requestPermission();
     }
 
-    // Get capture the current user location
-    LocationData locationData = await location.getLocation();
-    LatLng currentLatLng =
-        LatLng(locationData.latitude!, locationData.longitude!);
+    // // Get capture the current user location
+    // LocationData locationData = await location.getLocation();
+    // LatLng currentLatLng =
+    //     LatLng(locationData.latitude!, locationData.longitude!);
 
-    // Store the user location in sharedPreferences
-    ServicePreferences.pref.setDouble('latitude', locationData.latitude!);
-    ServicePreferences.pref.setDouble('longitude', locationData.longitude!);
+    // // Store the user location in sharedPreferences
+    // ServicePreferences.pref.setDouble('latitude', locationData.latitude!);
+    // ServicePreferences.pref.setDouble('longitude', locationData.longitude!);
   }
 }

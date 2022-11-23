@@ -10,7 +10,6 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     controller;
-    controller.appController.initializeLocationAndSave();
     return Scaffold(
         body: Center(
             child: Image.asset(

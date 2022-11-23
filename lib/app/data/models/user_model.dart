@@ -4,7 +4,7 @@ class User {
     required this.nama,
     required this.email,
     required this.nomorHp,
-    required this.token,
+    this.token,
   });
   int id;
   String nama;
@@ -18,7 +18,6 @@ class User {
       nama: json['nama'],
       email: json['email'],
       nomorHp: json['nomor_hp'],
-      token: '',
     );
   }
 

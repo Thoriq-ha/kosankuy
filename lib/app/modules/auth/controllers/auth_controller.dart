@@ -23,7 +23,6 @@ class AuthController extends GetxController {
     // {'identitas': 'admin@kos.id', 'password': 'password'}
     var res = await AuthServices.login(paramLogin);
     var data = res['data'];
-    print(res['message']);
     if (res['is_valid']) {
       appController.user = User.fromJson(data['user']);
       appController.user?.token = data['token'];

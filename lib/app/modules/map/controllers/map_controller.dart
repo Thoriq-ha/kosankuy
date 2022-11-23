@@ -1,72 +1,96 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'dart:math';
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kosankuy/app/components/my_bottom_sheet.dart';
+import 'package:kosankuy/app/data/models/kos_model.dart';
+import 'package:kosankuy/app/data/services/kos_services.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 
 class MapController extends GetxController {
   MapboxMapController? mapboxMapController;
-  final List<CameraPosition> _kRestaurantsList = [];
-  List<LatLng> restaurants = [
-    const LatLng(-7.940595, 112.609230),
-    const LatLng(-7.951810120108505, 112.60745865265774),
-  ];
+  List<Kos> listKost = [];
+
+  Map<String, dynamic> points = {
+    "type": "FeatureCollection",
+    "features": [
+      // {
+      //   "type": "Feature",
+      //   "id": 1,
+      //   "properties": {"type": "lodging", "name": "kos 1"},
+      //   "geometry": {
+      //     "type": "Point",
+      //     "coordinates": [-7.951810120108503, 112.60745865265773]
+      //   }
+      // }
+    ]
+  };
 
   @override
   void onInit() {
-    _kRestaurantsList.addAll(
-        (restaurants.map((v) => CameraPosition(target: v, zoom: 15)).toList()));
     super.onInit();
+  }
+
+  void getDataKos() async {
+    listKost.clear();
+    Map<String, dynamic> inputParam = {};
+    var res = await KosServices.getDataKos(inputParam);
+    var data = res['data'];
+
+    if (res['is_valid']) {
+      List<Kos> koss = (data as List).map((e) => Kos.fromJson(e)).toList();
+      listKost.addAll(koss);
+      addToPoints();
+    } else {
+      Get.snackbar('Error', res['message']);
+    }
+  }
+
+  void addToPoints() {
+    points['features'] = listKost
+        .map((value) => {
+              "type": "Feature",
+              "id": value.id,
+              "properties": {"type": "lodging", "name": value.namaKost},
+              "geometry": {
+                "type": "Point",
+                "coordinates": [(value.longlat[0]), (value.longlat[1])]
+              }
+            })
+        .toList();
   }
 
   void onMapCreated(MapboxMapController controller) {
     mapboxMapController = controller;
-    onStyleLoadedCallback();
+    _onStyleLoadedCallback();
+    mapboxMapController?.onFeatureTapped.add(_onFeatureTap);
   }
 
-  Future<void> onStyleLoadedCallback() async {
-    final ByteData bytes = await rootBundle.load('assets/logo.png');
-    final Uint8List list = bytes.buffer.asUint8List();
+  void _onFeatureTap(dynamic featureId, Point<double> point, LatLng latLng) {
+    MyBottomSheet.show(text: featureId);
+  }
 
-    mapboxMapController?.addImageSource(
-      '1',
-      list,
-      const LatLngQuad(
-        bottomRight: LatLng(-33.86264728692581, 151.19916915893555),
-        bottomLeft: LatLng(-33.86264728692581, 151.2288236618042),
-        topLeft: LatLng(-33.84322353475214, 151.2288236618042),
-        topRight: LatLng(-33.84322353475214, 151.19916915893555),
-      ),
-    );
-
-    // for (CameraPosition kRestaurant in _kRestaurantsList) {
-    //   mapboxMapController?.addSymbol(
-    //     SymbolOptions(
-    //       geometry: kRestaurant.target,
-    //       iconSize: 0.2,
-    //       iconImage: "assets/logo.png",
-    //     ),
-    //   );
-
-    //   // Map geometry = getGeometryFromSharedPrefs(carouselData[index]['index']);
-    //   final fills = {
-    //     "type": "FeatureCollection",
-    //     "features": [
-    //       {
-    //         "type": "Feature",
-    //         "id": 0,
-    //         "properties": <String, dynamic>{},
-    //         "geometry": {
-    //           "coordinates": [
-    //             [kRestaurant.target.latitude, kRestaurant.target.longitude],
-    //           ],
-    //           "type": "LineString"
-    //         },
-    //       },
-    //     ],
-    //   };
-
-    //   mapboxMapController?.addSource(
-    //       "fills", GeojsonSourceProperties(data: fills));
-    // }
+  Future<void> _onStyleLoadedCallback() async {
+    if (points['features'] != null) {
+      await mapboxMapController?.addGeoJsonSource("points", points);
+      await mapboxMapController?.addSymbolLayer(
+        "points",
+        "symbols",
+        SymbolLayerProperties(
+          textField: [Expressions.get, "name"],
+          textHaloWidth: 1,
+          textSize: 10,
+          textHaloColor: Colors.white.toHexStringRGB(),
+          textOffset: [
+            Expressions.literal,
+            [0, 2]
+          ],
+          iconImage: "{type}-11",
+          iconSize: 2,
+          iconAllowOverlap: true,
+          textAllowOverlap: true,
+        ),
+      );
+    }
   }
 }

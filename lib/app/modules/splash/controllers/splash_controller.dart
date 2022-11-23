@@ -12,6 +12,8 @@ class SplashController extends GetxController {
   @override
   void onReady() {
     runCode();
+    appController.initializeLocationAndSave();
+
     super.onReady();
   }
 

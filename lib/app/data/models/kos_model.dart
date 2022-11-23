@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Kos {
   Kos({
     required this.id,
@@ -6,18 +8,14 @@ class Kos {
     required this.harga,
     required this.longlat,
     required this.gambar,
-    required this.createdAt,
-    required this.updatedAt,
   });
 
   int id;
   String namaKost;
   String deskripsi;
   String harga;
-  String longlat;
-  String gambar;
-  String createdAt;
-  String updatedAt;
+  List<double> longlat;
+  List<String> gambar;
 
   factory Kos.fromJson(Map<String, dynamic> json) {
     return Kos(
@@ -25,10 +23,14 @@ class Kos {
         namaKost: json['nama_kost'],
         deskripsi: json['deskripsi'],
         harga: json['harga'],
-        longlat: json['longlat'],
-        gambar: json['gambar'],
-        createdAt: json['created_at'],
-        updatedAt: json['updated_at']);
+        longlat: json['longlat']
+            .toString()
+            .split(';')
+            .map((e) => double.parse(e))
+            .toList(),
+        gambar: (jsonDecode(json['gambar']) as List)
+            .map((e) => e.toString())
+            .toList());
   }
 
   Map<String, dynamic> toJson() {
@@ -39,8 +41,6 @@ class Kos {
     data['harga'] = harga;
     data['longlat'] = longlat;
     data['gambar'] = gambar;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
     return data;
   }
 }

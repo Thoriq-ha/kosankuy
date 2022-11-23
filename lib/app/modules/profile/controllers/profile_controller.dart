@@ -1,23 +1,19 @@
 import 'package:get/get.dart';
+import 'package:kosankuy/app/data/services/auth_services.dart';
+import 'package:kosankuy/app/data/services/service_preferences.dart';
+import 'package:kosankuy/app/global/controllers/app_controller.dart';
+import 'package:kosankuy/app/routes/app_pages.dart';
 
 class ProfileController extends GetxController {
-  //TODO: Implement ProfileController
+  Future<void> logout() async {
+    Map<String, dynamic> paramLogin = {};
+    var res = await AuthServices.logout(paramLogin);
+    var data = res['data'];
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+    if (res['is_valid']) {
+      ServicePreferences.pref.clear();
+      Get.find<AppController>().updateToken();
+      Get.offAllNamed(Routes.AUTH);
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

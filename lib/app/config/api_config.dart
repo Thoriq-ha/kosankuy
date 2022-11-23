@@ -5,5 +5,6 @@ class Api {
   static Map route = {
     RoutesApi.LOGIN: '${UrlConfig.BASE_URL}${RoutesApi.LOGIN}',
     RoutesApi.REGISTER: '${UrlConfig.BASE_URL}${RoutesApi.REGISTER}',
+    RoutesApi.LIST_KOS: RoutesApi.LIST_KOS,
   };
 }

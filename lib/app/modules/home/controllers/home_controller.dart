@@ -5,7 +5,7 @@ import 'package:kosankuy/app/modules/map/views/map_view.dart';
 import 'package:kosankuy/app/modules/profile/views/profile_view.dart';
 
 class HomeController extends GetxController {
-  final currentIndex = 0.obs;
+  final currentIndex = 1.obs;
   List<BottomNavigationBarItem> itemMenu = [
     const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
     const BottomNavigationBarItem(
