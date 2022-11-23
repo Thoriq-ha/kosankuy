@@ -4,13 +4,13 @@ class User {
     required this.nama,
     required this.email,
     required this.nomorHp,
-    this.token,
+    required this.token,
   });
   int id;
   String nama;
   String email;
   String nomorHp;
-  String? token;
+  String token;
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
@@ -18,6 +18,7 @@ class User {
       nama: json['nama'],
       email: json['email'],
       nomorHp: json['nomor_hp'],
+      token: json['token'] ?? '',
     );
   }
 
@@ -27,6 +28,7 @@ class User {
     data['nama'] = nama;
     data['email'] = email;
     data['nomor_hp'] = nomorHp;
+    data['token'] = token;
     return data;
   }
 }

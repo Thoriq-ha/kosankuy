@@ -10,11 +10,11 @@ class HomeBinding extends Bindings {
     Get.lazyPut<HomeController>(
       () => HomeController(),
     );
-    Get.lazyPut<MapController>(
-      () => MapController(),
-    );
-    Get.lazyPut<ProfileController>(
-      () => ProfileController(),
-    );
+    // Get.lazyPut<MapController>(
+    //   () => MapController(),
+    // );
+    // Get.lazyPut<ProfileController>(
+    //   () => ProfileController(),
+    // );
   }
 }

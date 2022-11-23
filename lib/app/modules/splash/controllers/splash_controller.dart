@@ -12,13 +12,13 @@ class SplashController extends GetxController {
   @override
   void onReady() {
     runCode();
-    appController.initializeLocationAndSave();
-
+    appController.initializePermissions();
     super.onReady();
   }
 
   getInitialPage() {
     var user = ServicePreferences.pref.getString('user');
+
     if (user != null) {
       appController.user = User.fromJson(json.decode(user));
       appController.updateToken();

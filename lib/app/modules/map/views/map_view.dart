@@ -11,6 +11,9 @@ class MapView extends GetView<MapController> {
   const MapView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Get.put<MapController>(
+      MapController(),
+    );
     LatLng uin = const LatLng(-7.951810120108503, 112.60745865265773);
     controller.getDataKos();
     return Scaffold(

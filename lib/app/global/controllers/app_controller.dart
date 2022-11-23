@@ -17,7 +17,6 @@ class AppController extends GetxController {
   // update on initial splash screen
   Future<void> updateToken() async {
     String token = user?.token ?? '';
-    print(token);
     dio.options = BaseOptions(
         baseUrl: UrlConfig.BASE_URL,
         connectTimeout: 10000,
@@ -26,7 +25,7 @@ class AppController extends GetxController {
     dio.interceptors.add(Logging());
   }
 
-  void initializeLocationAndSave() async {
+  void initializePermissions() async {
     // Ensure all permissions are collected for Locations
     Location location = Location();
     bool? serviceEnabled;
@@ -41,14 +40,5 @@ class AppController extends GetxController {
     if (permissionGranted == PermissionStatus.denied) {
       permissionGranted = await location.requestPermission();
     }
-
-    // // Get capture the current user location
-    // LocationData locationData = await location.getLocation();
-    // LatLng currentLatLng =
-    //     LatLng(locationData.latitude!, locationData.longitude!);
-
-    // // Store the user location in sharedPreferences
-    // ServicePreferences.pref.setDouble('latitude', locationData.latitude!);
-    // ServicePreferences.pref.setDouble('longitude', locationData.longitude!);
   }
 }

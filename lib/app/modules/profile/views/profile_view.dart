@@ -9,6 +9,9 @@ class ProfileView extends GetView<ProfileController> {
   const ProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Get.put<ProfileController>(
+      ProfileController(),
+    );
     return Scaffold(
       body: Center(
         child: MyButtonComponent.buttonFlat(context, () {
