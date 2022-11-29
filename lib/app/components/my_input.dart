@@ -157,16 +157,15 @@ class MyInputComponent {
               autocorrect: true,
               initialValue: initVal ?? "",
               decoration: InputDecoration(
-                // prefixIcon: Icon(Icons.search)
-                // ,
+                prefixIcon: const Icon(Icons.search),
                 hintText: hintText ?? '',
-                prefixIcon: GestureDetector(
-                  onTap: () {},
-                  child: Icon(
-                    Icons.description_outlined,
-                    color: MyColor.hexToColor(MyColor.iconColorOff),
-                  ),
-                ),
+                // prefixIcon: GestureDetector(
+                //   onTap: () {},
+                //   child: Icon(
+                //     Icons.description_outlined,
+                //     color: MyColor.hexToColor(MyColor.iconColorOff),
+                //   ),
+                // ),
                 hintStyle:
                     TextStyle(color: MyColor.hexToColor(MyColor.greyYoung)),
                 filled: true,

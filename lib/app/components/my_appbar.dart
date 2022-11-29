@@ -13,6 +13,10 @@ class MyAppBarComponent {
         preferredSize: const Size.fromHeight(60),
         child: Text(
           title ?? '-',
+          // style: TextStyle(
+          //     color: titleColor ??
+          //         MyColor.hexToColor(MyColor.titleGreyColorMenuTitle),
+          //     fontSize: 16
           style: GoogleFonts.poppins(
             textStyle: TextStyle(
                 color: titleColor ??
@@ -46,6 +50,12 @@ class MyAppBarComponent {
       centerTitle: center ?? false,
       title: Text(
         title ?? '-',
+        //   style: TextStyle(
+        //     color:
+        //         titleColor ?? MyColor.hexToColor(MyColor.titleGreyColorMenuTitle),
+        //     fontSize: 16,
+        //   ),
+        // ),
         style: GoogleFonts.poppins(
           textStyle: TextStyle(
             color: titleColor ??
@@ -63,6 +73,11 @@ class MyAppBarComponent {
       {String? counterNotif}) {
     return AppBar(
       title: Text(title ?? '-',
+          // style: TextStyle(
+          //     color: MyColor.hexToColor(MyColor.colorTitle),
+          //     fontWeight: FontWeight.bold,
+          //     fontSize: 16),
+          // ),
           style: GoogleFonts.poppins(
             textStyle: TextStyle(
                 color: MyColor.hexToColor(MyColor.colorTitle),

@@ -8,7 +8,6 @@ class ProfileController extends GetxController {
   Future<void> logout() async {
     Map<String, dynamic> paramLogin = {};
     var res = await AuthServices.logout(paramLogin);
-    var data = res['data'];
 
     if (res['is_valid']) {
       ServicePreferences.pref.clear();

@@ -19,6 +19,12 @@ class MyLabelComponent {
         fontWeight: fontWeight ?? FontWeight.normal,
         color: color ?? MyColor.hexToColor(MyColor.black),
       ),
+      // style: TextStyle(
+      //   fontSize: fontSize ?? 16,
+      //   fontWeight: fontWeight ?? FontWeight.normal,
+      //   color: color ?? MyColor.hexToColor(MyColor.black),
+      // ),
+
       maxLines: maxLines,
       overflow: overflow,
     );

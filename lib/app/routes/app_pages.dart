@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
+import '../modules/detail_kos/bindings/detail_kos_binding.dart';
+import '../modules/detail_kos/views/detail_kos_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/map/views/map_view.dart';
@@ -39,6 +41,11 @@ class AppPages {
     GetPage(
       name: _Paths.MAP,
       page: () => const MapView(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_KOS,
+      page: () => const DetailKosView(),
+      binding: DetailKosBinding(),
     ),
   ];
 }

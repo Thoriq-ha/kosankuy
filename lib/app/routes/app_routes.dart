@@ -8,6 +8,7 @@ abstract class Routes {
   static const AUTH = _Paths.AUTH;
   static const PROFILE = _Paths.PROFILE;
   static const MAP = _Paths.MAP;
+  static const DETAIL_KOS = _Paths.DETAIL_KOS;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const AUTH = '/auth';
   static const PROFILE = '/profile';
   static const MAP = '/map';
+  static const DETAIL_KOS = '/detail-kos';
 }

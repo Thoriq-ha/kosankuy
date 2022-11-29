@@ -58,16 +58,50 @@ class MapController extends GetxController {
               }
             })
         .toList();
+
+    // (points['features'] as List).add([
+    //   {
+    //     "type": "Feature",
+    //     "id": 2,
+    //     "properties": {"type": "lodging", "name": "kos 1"},
+    //     "geometry": {
+    //       "type": "Point",
+    //       "coordinates": [-7.951444, 112.607066]
+    //     }
+    //   },
+    //   {
+    //     "type": "Feature",
+    //     "id": 3,
+    //     "properties": {"type": "lodging", "name": "kos 1"},
+    //     "geometry": {
+    //       "type": "Point",
+    //       "coordinates": [-7.951444, 112.607066]
+    //     }
+    //   }
+    // ]);
   }
 
-  void onMapCreated(MapboxMapController controller) {
+  // @override
+  // void onClose() {
+  //   mapboxMapController?.dispose();
+  //   super.onClose();
+  // }
+
+  Future<void> onMapCreated(MapboxMapController controller) async {
+    // mapboxMapController?.dispose();
+    // onClose();
     mapboxMapController = controller;
     _onStyleLoadedCallback();
     mapboxMapController?.onFeatureTapped.add(_onFeatureTap);
   }
 
   void _onFeatureTap(dynamic featureId, Point<double> point, LatLng latLng) {
-    MyBottomSheet.show(text: featureId);
+    listKost.forEach((v) {
+      if (v.id == int.tryParse(featureId)) {
+        MyBottomSheet.show(text: v.namaKost, img: v.gambar[0]);
+      }
+    });
+    // MyBottomSheet.show(text: featureId);
   }
 
   Future<void> _onStyleLoadedCallback() async {

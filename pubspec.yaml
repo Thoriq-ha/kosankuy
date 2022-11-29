@@ -11,6 +11,9 @@ dependencies:
   dotted_border: ^2.0.0+3
   flutter:
     sdk: flutter
+  flutter_icons: ^1.1.0
+  flutter_launcher_icons: ^0.11.0
+  flutter_map: ^3.0.0
   get: ^4.6.5
   google_fonts: ^3.0.1
   location: ^4.4.0
@@ -23,6 +26,13 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/ic_launcher.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/ic_launcher.png"
 
 flutter:
   uses-material-design: true

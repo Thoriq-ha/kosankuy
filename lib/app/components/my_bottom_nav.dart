@@ -9,6 +9,10 @@ class MyBottomNavComponent {
     return BottomNavigationBar(
       unselectedItemColor: Colors.grey,
       selectedItemColor: MyColor.hexToColor(MyColor.greenYoung),
+      // selectedLabelStyle: TextStyle(
+      //   fontSize: 11,
+      //   fontWeight: FontWeight.normal,
+      // ),
       selectedLabelStyle: GoogleFonts.poppins(
         fontSize: 11,
         fontWeight: FontWeight.normal,

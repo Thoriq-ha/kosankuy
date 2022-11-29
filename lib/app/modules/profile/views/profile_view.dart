@@ -9,14 +9,18 @@ class ProfileView extends GetView<ProfileController> {
   const ProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.put<ProfileController>(
-      ProfileController(),
-    );
+    Get.lazyPut<ProfileController>(() => ProfileController());
     return Scaffold(
-      body: Center(
-        child: MyButtonComponent.buttonFlat(context, () {
-          controller.logout();
-        }, text: 'Log Out'),
+      body: Column(
+        children: [
+          const CircleAvatar(
+            radius: 48, // Image radius
+            backgroundImage: AssetImage('assets/profile.png'),
+          ),
+          MyButtonComponent.buttonFlat(context, () {
+            controller.logout();
+          }, text: 'Log Out'),
+        ],
       ),
     );
   }
