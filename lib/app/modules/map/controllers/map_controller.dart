@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:kosankuy/app/components/my_bottom_sheet.dart';
 import 'package:kosankuy/app/data/models/kos_model.dart';
 import 'package:kosankuy/app/data/services/kos_services.dart';
+import 'package:kosankuy/app/routes/app_pages.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 
 class MapController extends GetxController {
@@ -98,7 +99,12 @@ class MapController extends GetxController {
   void _onFeatureTap(dynamic featureId, Point<double> point, LatLng latLng) {
     listKost.forEach((v) {
       if (v.id == int.tryParse(featureId)) {
-        MyBottomSheet.show(text: v.namaKost, img: v.gambar[0]);
+        MyBottomSheet.show(
+            text: v.namaKost,
+            img: v.gambar[0],
+            action: () {
+              Get.toNamed(Routes.DETAIL_KOS, arguments: v);
+            });
       }
     });
     // MyBottomSheet.show(text: featureId);

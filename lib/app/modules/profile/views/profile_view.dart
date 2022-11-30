@@ -12,10 +12,14 @@ class ProfileView extends GetView<ProfileController> {
     Get.lazyPut<ProfileController>(() => ProfileController());
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const CircleAvatar(
             radius: 48, // Image radius
             backgroundImage: AssetImage('assets/profile.png'),
+          ),
+          const SizedBox(
+            height: 22,
           ),
           MyButtonComponent.buttonFlat(context, () {
             controller.logout();

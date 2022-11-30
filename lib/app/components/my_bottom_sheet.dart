@@ -4,7 +4,8 @@ import 'package:kosankuy/app/components/my_color.dart';
 import 'package:kosankuy/app/components/my_label.dart';
 
 class MyBottomSheet {
-  static Future<dynamic> show({required String text, required String img}) {
+  static Future<dynamic> show(
+      {required String text, required String img, Function? action}) {
     return Get.bottomSheet(
       SafeArea(
         child: Container(
@@ -26,7 +27,7 @@ class MyBottomSheet {
               const SizedBox(height: 24),
               MyLabelComponent.show(text: text),
               const SizedBox(height: 24),
-              itemMenu(onAction: () {}, label: "Detail"),
+              itemMenu(onAction: action, label: "Detail"),
               const SizedBox(height: 12),
             ],
           ),
