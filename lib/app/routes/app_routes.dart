@@ -9,6 +9,7 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const MAP = _Paths.MAP;
   static const DETAIL_KOS = _Paths.DETAIL_KOS;
+  static const REGISTER = _Paths.REGISTER;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const MAP = '/map';
   static const DETAIL_KOS = '/detail-kos';
+  static const REGISTER = '/register';
 }

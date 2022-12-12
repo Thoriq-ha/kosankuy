@@ -8,6 +8,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/map/views/map_view.dart';
 import '../modules/profile/views/profile_view.dart';
+import '../modules/auth/register/bindings/register_binding.dart';
+import '../modules/auth/register/views/register_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 
@@ -46,6 +48,11 @@ class AppPages {
       name: _Paths.DETAIL_KOS,
       page: () => const DetailKosView(),
       binding: DetailKosBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER,
+      page: () => const RegisterView(),
+      binding: RegisterBinding(),
     ),
   ];
 }

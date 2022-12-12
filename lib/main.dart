@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kosankuy/app/data/services/service_preferences.dart';
 import 'package:kosankuy/app/global/bindings/app_binding.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'app/routes/app_pages.dart';
 
@@ -12,6 +13,7 @@ Future<void> main() async {
   await ServicePreferences.init();
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  await dotenv.load(fileName: ".env");
 
   runApp(
     GetMaterialApp(

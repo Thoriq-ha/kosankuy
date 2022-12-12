@@ -5,6 +5,8 @@ import 'package:kosankuy/app/components/my_appbar.dart';
 import 'package:kosankuy/app/components/my_button.dart';
 import 'package:kosankuy/app/components/my_label.dart';
 import 'package:kosankuy/app/data/models/kos_model.dart';
+import 'package:kosankuy/app/routes/app_pages.dart';
+import 'package:kosankuy/app/utils/num_formatter.dart';
 
 import '../controllers/detail_kos_controller.dart';
 
@@ -27,10 +29,15 @@ class DetailKosView extends GetView<DetailKosController> {
                   text: kos.namaKost,
                   fontSize: 20,
                   fontWeight: FontWeight.w600),
+              Divider(),
               const SizedBox(height: 12),
               MyLabelComponent.show(text: kos.deskripsi),
               Expanded(child: Container()),
-              MyButtonComponent.buttonFlat(context, () {}, text: kos.harga),
+              MyLabelComponent.show(
+                  text: NumberFormatter.toRupiah(double.parse(kos.harga))),
+              MyButtonComponent.buttonFlat(context, () {
+                Get.toNamed(Routes.MAP);
+              }, text: 'Lihat Peta'),
               const SizedBox(
                 height: 36,
               )

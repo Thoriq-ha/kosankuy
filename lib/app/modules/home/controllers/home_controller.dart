@@ -13,7 +13,7 @@ class HomeController extends GetxController {
   List<BottomNavigationBarItem> itemMenu = [
     const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
     const BottomNavigationBarItem(
-        icon: Icon(Icons.wallet), label: 'Transsaction'),
+        icon: Icon(Icons.share_location_outlined), label: 'Map'),
     const BottomNavigationBarItem(
         icon: Icon(Icons.account_circle), label: 'Profile'),
   ];

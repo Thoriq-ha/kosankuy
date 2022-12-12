@@ -91,9 +91,11 @@ class MapController extends GetxController {
   Future<void> onMapCreated(MapboxMapController controller) async {
     // mapboxMapController?.dispose();
     // onClose();
-    mapboxMapController = controller;
-    _onStyleLoadedCallback();
-    mapboxMapController?.onFeatureTapped.add(_onFeatureTap);
+    if (controller != null) {
+      mapboxMapController = controller;
+      _onStyleLoadedCallback();
+      mapboxMapController?.onFeatureTapped.add(_onFeatureTap);
+    }
   }
 
   void _onFeatureTap(dynamic featureId, Point<double> point, LatLng latLng) {

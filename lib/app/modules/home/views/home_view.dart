@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:kosankuy/app/components/my_bottom_nav.dart';
-import 'package:kosankuy/app/modules/map/controllers/map_controller.dart';
 
 import '../controllers/home_controller.dart';
 

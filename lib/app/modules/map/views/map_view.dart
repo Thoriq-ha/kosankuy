@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:get/get.dart';
 import 'package:kosankuy/app/components/my_appbar.dart';
@@ -26,13 +27,12 @@ class MapView extends GetView<MapController> {
       body: Stack(
         children: [
           MapboxMap(
-            accessToken:
-                'pk.eyJ1IjoidHVnYXNnaXMiLCJhIjoiY2xhN2lhMmFmMGE5YzNwbXF1ZndrYXZxMiJ9.iq8WZei4wimaaZf7tYZzYw',
+            accessToken: dotenv.env['MAP_TOKEN'] ?? '',
             initialCameraPosition: CameraPosition(target: uin),
             onMapCreated: controller.onMapCreated,
             myLocationEnabled: true,
             myLocationTrackingMode: MyLocationTrackingMode.Tracking,
-            minMaxZoomPreference: const MinMaxZoomPreference(5, 17),
+            minMaxZoomPreference: const MinMaxZoomPreference(12, 14),
           ),
         ],
       ),

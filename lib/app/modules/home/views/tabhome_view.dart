@@ -6,9 +6,10 @@ import 'package:kosankuy/app/components/my_appbar.dart';
 import 'package:kosankuy/app/components/my_input.dart';
 import 'package:kosankuy/app/modules/home/controllers/home_controller.dart';
 import 'package:kosankuy/app/routes/app_pages.dart';
+import 'package:kosankuy/app/utils/num_formatter.dart';
 
 class TabHomeView extends StatelessWidget {
-  const TabHomeView({super.key});
+  const TabHomeView();
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,8 @@ class TabHomeView extends StatelessWidget {
                                 ),
                               ),
                               Text(controller.listKost[index].namaKost),
-                              Text(controller.listKost[index].harga)
+                              Text(NumberFormatter.toRupiah(double.parse(
+                                  controller.listKost[index].harga)))
                             ],
                           ),
                         ),

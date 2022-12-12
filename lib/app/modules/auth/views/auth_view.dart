@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kosankuy/app/components/my_button.dart';
 import 'package:kosankuy/app/components/my_input.dart';
+import 'package:kosankuy/app/routes/app_pages.dart';
 
 import '../controllers/auth_controller.dart';
 
@@ -51,6 +52,9 @@ class AuthView extends GetView<AuthController> {
         MyButtonComponent.buttonFlat(context, () {
           controller.login();
         }, text: 'Login'),
+        MyButtonComponent.buttonOutline(context, () {
+          Get.toNamed(Routes.REGISTER);
+        }, title: 'Register'),
       ],
     ));
   }

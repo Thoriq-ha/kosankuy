@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:kosankuy/app/components/date_pickers.dart';
 import 'package:kosankuy/app/components/my_color.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:signature/signature.dart';
 
 class MyInputComponent {
   static Widget textDatePickerNative(Function callback,
@@ -527,20 +526,20 @@ class MyInputComponent {
                 }));
   }
 
-  static Widget imgSignature(
-      BuildContext context, SignatureController controller) {
-    return Container(
-        margin: const EdgeInsets.all(16),
-        child: DottedBorder(
-          dashPattern: const [8, 4],
-          strokeWidth: 2,
-          color: Colors.grey,
-          child: Signature(
-            controller: controller,
-            width: 200,
-            height: 400,
-            backgroundColor: Colors.white,
-          ),
-        ));
-  }
+  // static Widget imgSignature(
+  //     BuildContext context, SignatureController controller) {
+  //   return Container(
+  //       margin: const EdgeInsets.all(16),
+  //       child: DottedBorder(
+  //         dashPattern: const [8, 4],
+  //         strokeWidth: 2,
+  //         color: Colors.grey,
+  //         child: Signature(
+  //           controller: controller,
+  //           width: 200,
+  //           height: 400,
+  //           backgroundColor: Colors.white,
+  //         ),
+  //       ));
+  // }
 }

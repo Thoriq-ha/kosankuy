@@ -40,15 +40,15 @@ class MyButtonComponent {
       {String? title, Color? color, double? fontSize}) {
     return GestureDetector(
       child: Container(
-          height: 100,
+          // height: 100,
           width: MediaQuery.of(context).size.width,
           margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
               border: Border.all(
-                color: color ?? MyColor.hexToColor(MyColor.iconColor),
+                color: color ?? MyColor.hexToColor(MyColor.greenYoung),
               ),
-              borderRadius: const BorderRadius.all(Radius.circular(5))),
+              borderRadius: const BorderRadius.all(Radius.circular(24))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -58,16 +58,16 @@ class MyButtonComponent {
                     text: title ?? "-",
                     fontWeight: FontWeight.bold,
                     fontSize: fontSize ?? 14,
-                    color: color ?? MyColor.hexToColor(MyColor.iconColor),
+                    color: color ?? MyColor.hexToColor(MyColor.greenYoung),
                     textAlign: TextAlign.right),
               ),
-              SizedBox(
-                width: 30,
-                child: Icon(
-                  Icons.keyboard_arrow_right,
-                  color: color ?? MyColor.hexToColor(MyColor.iconColor),
-                ),
-              ),
+              // SizedBox(
+              //   width: 30,
+              //   child: Icon(
+              //     Icons.keyboard_arrow_right,
+              //     color: color ?? MyColor.hexToColor(MyColor.iconColor),
+              //   ),
+              // ),
             ],
           )),
       onTap: () {
