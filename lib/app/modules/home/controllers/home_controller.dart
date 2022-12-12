@@ -7,6 +7,7 @@ import 'package:kosankuy/app/modules/map/views/map_view.dart';
 import 'package:kosankuy/app/modules/profile/views/profile_view.dart';
 
 class HomeController extends GetxController {
+  RxList<Kos> listKostView = RxList();
   RxList<Kos> listKost = RxList();
 
   final currentIndex = 0.obs;
@@ -30,16 +31,27 @@ class HomeController extends GetxController {
   }
 
   void getDataKos() async {
-    listKost.clear();
+    listKostView.clear();
     Map<String, dynamic> inputParam = {};
     var res = await KosServices.getDataKos(inputParam);
     var data = res['data'];
 
     if (res['is_valid']) {
       List<Kos> koss = (data as List).map((e) => Kos.fromJson(e)).toList();
+      listKostView.addAll(koss);
       listKost.addAll(koss);
     } else {
       Get.snackbar('Error', res['message']);
     }
+  }
+
+  void searchDataKos(String query) async {
+    listKostView.clear();
+    List<Kos> koss = listKost
+        .where((element) =>
+            element.namaKost.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+    listKostView.addAll(koss);
+    update();
   }
 }

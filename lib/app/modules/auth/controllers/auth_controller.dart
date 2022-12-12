@@ -9,6 +9,7 @@ import 'package:kosankuy/app/routes/app_pages.dart';
 
 class AuthController extends GetxController {
   RxBool isPassword = true.obs;
+  RxBool isLoading = false.obs;
   final AppController appController = Get.find();
   Map<String, dynamic> paramLogin = {
     'identitas': '',
@@ -21,6 +22,7 @@ class AuthController extends GetxController {
 
   Future<void> login() async {
     // {'identitas': 'admin@kos.id', 'password': 'password'}
+    isLoading.value = true;
     var res = await AuthServices.login(paramLogin);
     var data = res['data'];
     if (res['is_valid']) {
@@ -30,7 +32,10 @@ class AuthController extends GetxController {
       ServicePreferences.pref
           .setString('user', json.encode(appController.user?.toMap()));
       appController.updateToken();
+      isLoading.value = false;
       Get.offAllNamed(Routes.HOME);
+    } else {
+      isLoading.value = false;
     }
   }
 }

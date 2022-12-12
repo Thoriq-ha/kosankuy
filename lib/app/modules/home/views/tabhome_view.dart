@@ -21,20 +21,25 @@ class TabHomeView extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 12),
-          MyInputComponent.text((v) {}, context: context, hintText: 'Search'),
+          MyInputComponent.text((v) {
+            controller.searchDataKos(v);
+          }, context: context, hintText: 'Search'),
           Obx(() {
+            if (controller.listKostView == []) {
+              return const CircularProgressIndicator();
+            }
             return Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GridView.builder(
-                  itemCount: controller.listKost.length,
+                  itemCount: controller.listKostView.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2, crossAxisSpacing: 24),
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
                         Get.toNamed(Routes.DETAIL_KOS,
-                            arguments: controller.listKost[index]);
+                            arguments: controller.listKostView[index]);
                       },
                       child: Card(
                         child: Padding(
@@ -47,13 +52,13 @@ class TabHomeView extends StatelessWidget {
                                 height: 100,
                                 width: double.infinity,
                                 child: Image.network(
-                                  controller.listKost[index].gambar[0],
+                                  controller.listKostView[index].gambar[0],
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              Text(controller.listKost[index].namaKost),
+                              Text(controller.listKostView[index].namaKost),
                               Text(NumberFormatter.toRupiah(double.parse(
-                                  controller.listKost[index].harga)))
+                                  controller.listKostView[index].harga)))
                             ],
                           ),
                         ),
